@@ -1,7 +1,8 @@
 let input = document.querySelector('.entered-list');
 let addBtn = document.querySelector('.add-list');
 let tasks = document.querySelector('.tasks');
-let updateBtn = document.querySelectorAll('.fa-pen-to-square');
+let updateBtn = document.querySelectorAll('.fa-square-pen');
+let finishBtn = document.querySelectorAll('.fa-square-check');
 
 // **추가 버튼 활성화 여부**
 // 1.입력된 값이 있으면 버튼 활성화
@@ -12,7 +13,7 @@ input.addEventListener('keyup', () => {
     } else {
         addBtn.classList.remove('active')
     }
-})
+});
 
 // **추가버튼**
 // 입력된 값이 있으면 새로운 할일 목록을 생성
@@ -27,7 +28,8 @@ addBtn.addEventListener('click', () => {
         newItem.innerHTML = `
         <p> ${input.value} </p>
         <div class="item-btn">
-        <i class=" fa-solid fa-pen-to-square"></i>
+        <i class="fa-solid fa-square-check"></i>
+        <i class="fa-solid fa-square-pen"></i>
         <i class=" fa-solid fa-xmark"></i>
         </div>
         `
@@ -36,25 +38,39 @@ addBtn.addEventListener('click', () => {
     } else{
         alert('할일을 입력하세요');
     }
-})
+});
+
+//완료버튼
+tasks.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-square-check')) {
+        e.target.parentElement.parentElement.classList.toggle('completed');
+    }
+});
+
 
 // **삭제버튼** 
 tasks.addEventListener('click', (e) => {
     if (e.target.classList.contains('fa-xmark')) {
         e.target.parentElement.parentElement.remove();
     }
-} )
+});
 
 // **수정버튼**
-// 1. 수정버튼을 한번 누르면 -> 수정 가능한 상태 변경 & 내용입력,
+// 1. 수정버튼을 한번 누르면 -> 수정 가능한 상태 변경 & 내용입력
 // 2. 수정버튼을 한번 더 누르면 -> 수정 불가능 상태 & 변경내용 저장
 let count = 0;
 
+
+// 수정버튼
 tasks.addEventListener('click', (e) => {
-  count += 1;
-  if (count % 2 === 1) {
-    e.target.parentElement.parentElement.contentEditable = true;
-  } else {
-    e.target.parentElement.parentElement.contentEditable = false;
-  }
+    if(e.target.classList.contains('fa-square-pen')){
+        if(e.target.dataset && e.target.dataset.edit=="true"){
+            e.target.parentElement.parentElement.querySelector('.item p').contentEditable = false;
+            e.target.dataset.edit = false;
+        }else{
+            e.target.parentElement.parentElement.querySelector('.item p').contentEditable = true;
+            e.target.parentElement.parentElement.querySelector('.item p').focus();
+            e.target.dataset.edit = true;
+        }
+    }
 });
