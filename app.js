@@ -40,8 +40,6 @@ addBtn.addEventListener('click', () => {
     todoList.push(newItem.querySelector('p').textContent);
     localStorage.setItem('todoList', JSON.stringify(todoList));
 
-
-
         input.value = '';
     } else{
         alert('할일을 입력하세요');
@@ -67,7 +65,7 @@ savedTodoList.forEach(todo => {
     tasks.appendChild(newItem);
 });
 
-//완료버튼
+// **완료버튼**
 tasks.addEventListener('click', (e) => {
     if (e.target.classList.contains('fa-square-check')) {
         e.target.parentElement.parentElement.classList.toggle('completed');
