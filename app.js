@@ -98,5 +98,3 @@ tasks.addEventListener('click', (e) => {
     }
 });
 
-// localStorage.setItem('obj', JSON.stringify ({todo: `${input.value}`}) );
-
