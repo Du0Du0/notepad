@@ -34,10 +34,37 @@ addBtn.addEventListener('click', () => {
         </div>
         `
         tasks.appendChild(newItem);
+
+    // 로컬스토리지에 할일 목록 추가
+    let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+    todoList.push(newItem.querySelector('p').textContent);
+    localStorage.setItem('todoList', JSON.stringify(todoList));
+
+
+
         input.value = '';
     } else{
         alert('할일을 입력하세요');
     }
+});
+
+
+// 데이터 불러오기
+let savedTodoList = JSON.parse(localStorage.getItem('todoList')) || [];
+
+// 할일 목록 화면에 띄우기
+savedTodoList.forEach(todo => {
+    let newItem = document.createElement('div');
+    newItem.classList.add('item');
+    newItem.innerHTML = `
+    <p> ${todo} </p>
+    <div class="item-btn">
+        <i class="fa-solid fa-square-check"></i>
+        <i class="fa-solid fa-square-pen"></i>
+        <i class=" fa-solid fa-xmark"></i>
+    </div>
+    `;
+    tasks.appendChild(newItem);
 });
 
 //완료버튼
@@ -58,10 +85,6 @@ tasks.addEventListener('click', (e) => {
 // **수정버튼**
 // 1. 수정버튼을 한번 누르면 -> 수정 가능한 상태 변경 & 내용입력
 // 2. 수정버튼을 한번 더 누르면 -> 수정 불가능 상태 & 변경내용 저장
-let count = 0;
-
-
-// 수정버튼
 tasks.addEventListener('click', (e) => {
     if(e.target.classList.contains('fa-square-pen')){
         if(e.target.dataset && e.target.dataset.edit=="true"){
@@ -74,3 +97,6 @@ tasks.addEventListener('click', (e) => {
         }
     }
 });
+
+// localStorage.setItem('obj', JSON.stringify ({todo: `${input.value}`}) );
+
