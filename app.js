@@ -28,9 +28,9 @@ addBtn.addEventListener('click', () => {
         newItem.innerHTML = `
         <p> ${input.value} </p>
         <div class="item-btn">
-        <i class="fa-solid fa-square-check"></i>
-        <i class="fa-solid fa-square-pen"></i>
-        <i class=" fa-solid fa-xmark"></i>
+        <i class="fa-solid fa-square-check" style="color: #636363;"></i>
+        <i class="fa-solid fa-square-pen style="color: #636363;""></i>
+           <i class=" fa-solid fa-xmark" style="color: #636363;"></i>
         </div>
         `
         tasks.appendChild(newItem);
@@ -97,8 +97,6 @@ tasks.addEventListener('click', (e) => {
     }
 });
 
-
-
 // **수정버튼**
 // 1. 수정버튼을 한번 누르면 -> 수정 가능한 상태 변경 & 내용입력
 // 2. 수정버튼을 한번 더 누르면 -> 수정 불가능 상태 & 변경내용 저장
@@ -114,4 +112,3 @@ tasks.addEventListener('click', (e) => {
         }
     }
 });
-

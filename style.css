@@ -14,7 +14,7 @@
 
 
 body{
-    background-color: bisque;
+    background-color: rgb(58, 23, 53);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,9 +24,9 @@ body{
 }
 
 .title{
-    font-size: 30px;
+    font-size: 50px;
     font-weight: 600;
-    color: blue;
+    color: #D8C1E0;
     letter-spacing: 1px;
     margin: 30px;
 }
@@ -35,10 +35,9 @@ body{
     padding: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     border-radius: 5px;
-    background-color: white;
-
-
+    background-color: #ffffff;
 }
+
 .list-head{
     display: grid;
     grid-template-columns: 4fr 1fr;
@@ -49,14 +48,16 @@ body{
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
-    font-size: 16px;
+    background-color: #D8C1E0;
+    color: #271522;
+    font-size: 20px;
     outline:  none;
 }
 
 .add-list{
     border: none;
     border-radius: 5px;
-    background-color: blue;
+    background-color: rgb(58, 23, 53);
     outline: none;
     font-size: 16px;
     color: #ccc;
@@ -89,17 +90,15 @@ body{
 .item p{
    font-size: 20px;
    font-weight:  500;
-   color: black;
+   color: #271522;
    letter-spacing: 1px;
 }
 
 .item.completed p{
-    color: #00000018;
+    color: #271522;
     text-decoration: line-through;
 
 }
-
-
 
 .item.btn{
     display: flex;
@@ -115,13 +114,17 @@ body{
 }
 
 .fa-square-check {
-   font-size: 25px;
+    font-size: 25px;
+    color: #636363;
 }
 
 .fa-square-pen {
     font-size: 25px;
- }
+    color: #636363;
+}
 
- .fa-xmark {
+.fa-xmark {
     font-size: 25px;
- }
+    color: #636363;
+}
+
