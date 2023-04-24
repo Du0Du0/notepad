@@ -80,6 +80,25 @@ tasks.addEventListener('click', (e) => {
     }
 });
 
+// 삭제버튼을 누르면 localStorage 삭제
+tasks.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-xmark')) {
+        let todoItem = e.target.closest('.item');
+        let todoContent = todoItem.querySelector('p').textContent;
+        todoItem.remove();
+
+        // localStorage에서 삭제할 todo 항목 찾기
+        let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+        let idx = todoList.find(item => item === todoContent);
+        todoList.splice(idx, 1);
+
+        // 로컬스토리지에 업데이트된 할일 목록 저장
+        localStorage.setItem("todoList", JSON.stringify(todoList));
+    }
+});
+
+
+
 // **수정버튼**
 // 1. 수정버튼을 한번 누르면 -> 수정 가능한 상태 변경 & 내용입력
 // 2. 수정버튼을 한번 더 누르면 -> 수정 불가능 상태 & 변경내용 저장
